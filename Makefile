@@ -2,11 +2,6 @@
 
 
 ##### APP SCRIPTS #####
-train:
-	train_word2vec_model -s 2011-01-01 -e 2019-12-31 -v 0 -t 0
-
-wordsim:
-	test_word_similarity
 
 
 ##### DEV & DEPLOY #####
@@ -16,22 +11,17 @@ test:
 precommit:
 	pre-commit run --all-files
 
-
 image:
-	docker build --build-arg HTTP_PROXY=$$HTTP_PROXY --build-arg HTTPS_PROXY=$$HTTP_PROXY -t nlp:latest .
+	docker build -t mri:latest .
 
 bash:
-	docker run -it --name nlp nlp bash
+	docker run -it --name mri mri:lastest bash
 
 ##### DEV DATABASE MNGM ####
 db:
 	docker run -d --name postgres -e POSTGRES_USER=$${POSTGRES_USER} -e POSTGRES_PASSWORD=$${POSTGRES_PASSWORD} -p 5432:5432 -v ${HOME}/data:/var/lib/postgresql/data postgres:15
-	sleep 2
-	cd src/djangoproject/; \
-	python manage.py migrate
-	load_train_reviews_data
 
-dbd:
+dbrm:
 	sudo rm -rf ~/data
 	docker rm -f postgres
 
@@ -61,48 +51,6 @@ venv:
 
 venvd:
 	rm -rf .venv
-
-
-##### DJANGO #####
-shell:
-	cd src/djangoproject; \
-	python manage.py shell
-
-app:
-	cd src/djangoproject/; \
-	python manage.py collectstatic; \
-	python manage.py migrate; \
-	python manage.py createsuperuser
-
-django:
-	cd src/djangoproject/; \
-	python manage.py runserver
-
-superuser:
-	cd src/djangoproject/; \
-	python manage.py createsuperuser
-
-migrate:
-	cd src/djangoproject/; \
-	python manage.py migrate
-
-makemigrations:
-	cd src/djangoproject; \
-	python manage.py makemigrations
-
-static:
-	cd src/djangoproject/; \
-	python manage.py collectstatic
-
-loaddata:
-	cd src/djangoproject/; \
-	python manage.py migrate; \
-	python manage.py flush --no-input; \
-	python manage.py loaddata db_backup.json
-
-flush:
-	cd djangoproject/; \
-	python manage.py flush
 
 
 ##### CLI PRETTY #####
