@@ -4,7 +4,7 @@ This repository contains python code for project related to MRI analysis.
 - TBD
 - TBD
 
-## Set up repository
+## Set up development environment
 - Install poetry package and dependency manager:
 ```bash
 make poetry
