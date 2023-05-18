@@ -19,10 +19,11 @@ COPY ./pyproject.toml ./poetry.lock ./
 
 RUN curl -sSL https://install.python-poetry.org | python3.9 -
 
+RUN poetry config virtualenvs.in-project true
+
 RUN python3.9 -m venv .venv && \
     mkdir src/ && touch src/setup.py && \
-    poetry config virtualenvs.in-project true && \
     poetry run pip install -U pip setuptools wheel && \
-    poetry install --without dev
+    poetry install --no-cache
 
 COPY . .

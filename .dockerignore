@@ -6,6 +6,7 @@
 Dockerfile
 docker-compose.yml
 logs
+data
 tests
 setup.cfg
 .pre-commit-config.yaml
