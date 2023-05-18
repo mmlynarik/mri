@@ -15,7 +15,7 @@ image:
 	docker build -t mri:latest .
 
 bash:
-	docker run -it --name mri mri:lastest bash
+	docker run -it --name mri mri:latest bash
 
 ##### DEV DATABASE MNGM ####
 db:
