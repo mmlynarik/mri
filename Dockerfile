@@ -24,8 +24,9 @@ RUN poetry config virtualenvs.in-project true
 RUN python3.9 -m venv .venv && \
     mkdir src/ && touch src/setup.py && \
     poetry run pip install -U pip setuptools wheel && \
-    poetry install
+    poetry run pip install torch==2.0.0+cpu --index-url https://download.pytorch.org/whl/cpu --trusted-host download.pytorch.org && \
+    poetry install --without dev
 
-RUN rm -rf /root/.cache/pypoetry
+RUN rm -rf /root/.cache
 
 COPY . .
