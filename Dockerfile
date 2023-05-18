@@ -24,6 +24,8 @@ RUN poetry config virtualenvs.in-project true
 RUN python3.9 -m venv .venv && \
     mkdir src/ && touch src/setup.py && \
     poetry run pip install -U pip setuptools wheel && \
-    poetry install --no-cache
+    poetry install
+
+RUN rm -rf /root/.cache/pypoetry
 
 COPY . .
