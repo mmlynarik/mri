@@ -2833,6 +2833,20 @@ doc = ["sphinx"]
 test = ["pytest", "pytest-cov"]
 
 [[package]]
+name = "src"
+version = "0.0.1"
+description = "MRI project"
+category = "dev"
+optional = false
+python-versions = "*"
+files = []
+develop = true
+
+[package.source]
+type = "directory"
+url = "src"
+
+[[package]]
 name = "sympy"
 version = "1.12"
 description = "Computer algebra system (CAS) in Python"
@@ -3237,4 +3251,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9.5,<3.11"
-content-hash = "8b2c99950b5e242f9854d09b23eda8750fa744b2c7a6cef4465385adfe567e3d"
+content-hash = "875b87a7335cd5cc8195b1d3810f616b278341bba04dd3485cfe9271a261ebac"
