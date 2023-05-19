@@ -1,10 +1,9 @@
 .venv/
 .env
 .vscode/
-mallet/
 .ipynb_checkpoints
+data/
+logs/
 __pycache__/
 *.egg-info
 src/djangoproject/static/
-**/data/
-logs/
